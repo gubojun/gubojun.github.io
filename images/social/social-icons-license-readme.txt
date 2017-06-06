@@ -1,1 +1,0 @@
-Social icons by: http://www.onextrapixel.com/2012/02/28/freebies-black-white-minimal-social-icons-pack/
