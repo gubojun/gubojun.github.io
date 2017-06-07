@@ -26,9 +26,52 @@
     <script type="text/javascript" src="style/js/mediaelementplayer.min.js"></script>
     <script type="text/javascript" src="style/js/jquery.dcflickr.1.0.js"></script>
     <script type="text/javascript" src="style/js/twitter.min.js"></script>
+    <script src="style/js/angular.min-1.4.6.js"></script>
+    <script src="style/js/angular-route-1.3.13.js"></script>
+    <script>
+            angular.module('gubojunApp', ['ngRoute'])
+            .controller('gubojunCtrl', function($scope) {
+			}).controller('ctrlA', function($scope) {
+			    $('#a').addClass('active');
+				$('#b').removeClass('active');
+				$('#c').removeClass('active');
+				$('#d').removeClass('active');
+			}).controller('ctrlB', function($scope) {
+				$('#a').removeClass('active');
+				$('#b').addClass('active');
+				$('#c').removeClass('active');
+				$('#d').removeClass('active');
+			}).controller('ctrlC', function($scope) {
+				$('#a').removeClass('active');
+				$('#b').removeClass('active');
+				$('#c').addClass('active');
+				$('#d').removeClass('active');
+			}).controller('ctrlD', function($scope) {
+				$('#a').removeClass('active');
+				$('#b').removeClass('active');
+				$('#c').removeClass('active');
+				$('#d').addClass('active');
+			}).config(function($routeProvider) {
+				$routeProvider.when('/index', {
+					templateUrl : 'index_center.html',
+					controller : 'ctrlA'
+				}).when('/page-with-sidebar', {
+					templateUrl : 'page-with-sidebar.html',
+					controller : 'ctrlB'
+				}).when('/typography', {
+					templateUrl : 'typography.html',
+					controller : 'ctrlC'
+				}).when('/contact', {
+					templateUrl : 'contact.html',
+					controller : 'ctrlD'
+				}).otherwise({
+					redirectTo : '/index'
+				});
+			});
+    </script>
     <script type="text/javascript">$.backstretch("style/images/bg/1.jpg");</script>
 </head>
-<body>
+<body ng-app='gubojunApp' ng-controller="gubojunCtrl">
 <div class="scanlines"></div>
 
 <!-- Begin Header -->
@@ -45,24 +88,24 @@
         <div id="menu-wrapper">
             <div id="menu" class="menu">
                 <ul id="tiny">
-                    <li class="active"><a href="index.html">Blog</a>
+                    <li id="a" class="active"><a href="#/index">Blog</a>
                         <ul>
                             <li><a href="post.html">Blog Post</a></li>
                         </ul>
                     </li>
-                    <li><a href="page-with-sidebar.html">Pages</a>
+                    <li id="b"><a href="#/page-with-sidebar">Pages</a>
                         <ul>
-                            <li><a href="page-with-sidebar.html">Page With Sidebar</a></li>
+                            <li><a href="#/page-with-sidebar">Page With Sidebar</a></li>
                             <li><a href="full-width.html">Full Width</a></li>
                         </ul>
                     </li>
-                    <li><a href="typography.html">Styles</a>
+                    <li id="c"><a href="#/typography">Styles</a>
                         <ul>
-                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="#/typography">Typography</a></li>
                             <li><a href="columns.html">Columns</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li id="d"><a href="#/contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -70,219 +113,20 @@
         <!-- End Menu -->
     </div>
 </div>
-<!-- End Header -->
-
-<!-- Begin Wrapper -->
-<div class="wrapper"><!-- Begin Intro -->
-    <div class="intro">顾博君的网站，成功永远属于一直在跑的人！！！
-    </div>
-    <ul class="social">
-        <li><a class="rss" href="#"></a></li>
-        <li><a class="facebook" href="#"></a></li>
-        <li><a class="twitter" href="#"></a></li>
-        <li><a class="pinterest" href="#"></a></li>
-        <li><a class="dribbble" href="#"></a></li>
-        <li><a class="flickr" href="#"></a></li>
-        <li><a class="linkedin" href="#"></a></li>
-    </ul><!-- End Intro -->
-
-    <!-- Begin Blog Grid -->
-    <div class="blog-wrap">
-        <!-- Begin Blog -->
-        <div class="blog-grid">
-            <!-- Begin Image Format -->
-            <div class="post format-image box">
-                <div class="frame">
-                    <a href="post.html">
-                        <img src="style/images/art/post1.jpg" alt=""/>
-                    </a>
-                </div>
-                <h2 class="title"><a href="article2.html">爱上了那一抹红</a></h2>
-                <p>7月，天气很热，她又看上一套裙子，上身红花小褂，外加盘扣，下身大红裙摆过膝，已经入手三套这样的行头，大红、粗布蓝、姜黄，她并不是每件都能穿出设计师设计服饰的味道来，但由于喜欢，便归入自己的衣柜之中。﻿
-                    <br/>
-                    8月，整理行装时，全部塞入那个密码520的箱子，开始远足。记得很清楚，8月1日和兵哥哥开始远足，他考上了天津指挥学院，听别人说那里的学生，大多会成为军官，天晓得他费了多大劲考进了那所学校，她真心为这位哥哥感到自豪，可在他眼里，这个女孩只是一个替补而已。﻿﻿
-                    <br/>
-                    &#8230;&#8230;
-                <div class="details">
-                    <span class="icon-image"><a href="#">September 26, 2012</a></span>
-                    <span class="likes"><a href="#" class="likeThis">44</a></span>
-                    <span class="comments"><a href="#">3</a></span>
-                </div>
-            </div>
-            <!-- End Image Format -->
-
-
-            <!-- Begin Quote Format -->
-            <div class="post format-quote box">
-                <blockquote>
-                    《短歌行》<br/>
-                    白日何短短，百年苦易满。苍穹浩茫茫，万劫太极长。<br/>
-                    麻姑垂两鬓，一半已成霜。天公见玉女，大笑亿千场。<br/>
-                    吾欲揽六龙，回车挂扶桑。北斗酌美酒，劝龙各一觞。<br/>
-                    富贵非所愿，与人驻颜光。<cite>李白</cite></blockquote>
-                <div class="details">
-                    <span class="icon-quote"><a href="#">June 6, 2017</a></span>
-                    <span class="likes"><a href="#" class="likeThis">27</a></span>
-                    <span class="comments"><a href="#">4</a></span>
-                </div>
-
-            </div>
-            <!-- End Quote Format -->
-
-
-            <!-- Begin Video Format -->
-            <div class="post format-video box">
-                <div class="video frame">
-                    <iframe src="http://player.vimeo.com/video/40558553?title=0&byline=0&portrait=0" width="500"
-                            height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen
-                            allowFullScreen></iframe>
-                </div>
-                <h2 class="title"><a href="post.html">视频标题。。。</a></h2>
-                <p>视频。。。。</p>
-
-                <div class="details">
-                    <span class="icon-video"><a href="#">June 6, 2017</a></span>
-                    <span class="likes"><a href="#" class="likeThis">18</a></span>
-                    <span class="comments"><a href="#">1</a></span>
-                </div>
-
-            </div>
-            <!-- End Video Format -->
-
-
-            <!-- Begin Audio Format -->
-            <div class="post format-audio box">
-                <div class="audio-wrapper">
-                    <div class="vinyl">
-                        <dl>
-                            <dt class="art">
-                                <img class="highlight" src="style/images/vinyl.png"/>
-                                <img src="style/images/art/artwork.png" alt=""/>
-                            </dt>
-                            <dd class="song">
-                                <div class="icon-song"></div>
-                                歌曲：Om Du Möter Varg
-                            </dd>
-                            <dd class="artist">
-                                <div class="icon-artist"></div>
-                                演唱：Detektivbyrån
-                            </dd>
-                            <dd class="album">
-                                <div class="icon-album"></div>
-                                专辑：Wermland
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="audio">
-                        <audio controls="" preload="none" src="http://elemisdesign.com/files/omdumotervarg.mp3"></audio>
-                    </div>
-                </div>
-                <p><strong>Detektivbyrån</strong> (&#8220;The Detective Agency&#8221;) was a <a title="Sweden"
-                                                                                                href="http://en.wikipedia.org/wiki/Sweden">Swedish</a>
-                    <a title="Electronica" href="http://en.wikipedia.org/wiki/Electronica">electronica</a> and <a
-                            title="Folk music" href="http://en.wikipedia.org/wiki/Folk_music">folk music</a> trio from
-                    <a title="Gothenburg" href="http://en.wikipedia.org/wiki/Gothenburg">Gothenburg</a>. The group
-                    consisted of Anders &#8220;Flanders&#8221; Molin (<a title="Accordion"
-                                                                         href="http://en.wikipedia.org/wiki/Accordion">accordion</a>,
-                    <a title="Music box" href="http://en.wikipedia.org/wiki/Music_box">music box</a>), Martin &#8220;MacGyver&#8221;
-                    Molin (<a title="Glockenspiel" href="http://en.wikipedia.org/wiki/Glockenspiel">glockenspiel</a>,
-                    traktofon, toy <a title="Piano" href="http://en.wikipedia.org/wiki/Piano">piano</a>, <a
-                            title="Theremin" href="http://en.wikipedia.org/wiki/Theremin">Theremin</a>) and Jon Nils
-                    Emanuel Ekström <a title="Drum kit" href="http://en.wikipedia.org/wiki/Drum_kit">drums</a>, <a
-                            title="Sound box" href="http://en.wikipedia.org/wiki/Sound_box">sound box</a>, <a
-                            title="Bell (instrument)" href="http://en.wikipedia.org/wiki/Bell_%28instrument%29">small
-                        bells</a>.</p>
-
-                <div class="details">
-                    <span class="icon-audio"><a href="#">September 7, 2017</a></span>
-                    <span class="likes"><a href="#" class="likeThis">20</a></span>
-                    <span class="comments"><a href="#">1</a></span>
-                </div>
-
-            </div>
-            <!-- End Audio Format -->
-
-
-            <!-- Begin Standard Format -->
-            <div class="post format-standard box">
-
-                <h2 class="title"><a href="article1.html">你不够优秀，只是因为你不够热爱！——致在梦想前迷茫的你</a></h2>
-                <p>塔拉娜是我的同门。
-                    她来自阿塞拜疆，那个靠近里海，有一座美丽少女塔的国度。
-                    学校招收的外国留学生来自两百多个国家，每天国教院楼前，外国人络绎不绝，我平时也接触了很多外国留学生，但塔拉娜的汉语是我见过的说得最地道的，几乎没有口音，字正腔圆。
-                    她精通五国语言，出生于一个翻译家庭，爸爸在俄罗斯当德语翻译，精通七国语言。
-                    很多人问她，汉语为什么可以说得那么好？她总是谦虚地笑笑，说因为家里有一个很好的语言环境。
-                    那天开完组会，我和她一起去吃冒菜，又提到这个问题，<strong>她很认真地告诉我，因为她很喜欢汉语，她大学四年学的就是中文专业，她觉得汉语是世界上除母语外，最美丽的语言。来中国两年，她也已经把中国当成了第二故乡。</strong>
-                </p>
-                <p>
-                    因为这份热爱，她获得了阿塞拜疆赛区的“汉语桥”第一名，拿了政府奖学金来中国留学；因为这份热爱，她潜心学习汉语，钻研课件到凌晨三点，又能迅速融入中国的生活环境，和中国学生一样，用共享单车、跳广场舞；因为这份热爱，她总是花费比中国学生多几倍的时间去啃那些晦涩难懂的专业书，却孜孜不倦。
-                    回想我自己，学英语十几年，却不能用英语自由地表达自己的观点和想法，不禁汗颜。</p>
-                <br/>
-                &#8230;&#8230;
-                <div class="details">
-                    <span class="icon-standard"><a href="#">June 6, 2017</a></span>
-                    <span class="likes"><a href="#" class="likeThis">11</a></span>
-                    <span class="comments"><a href="#">0</a></span>
-                </div>
-
-            </div>
-            <!-- End Standard Format -->
-
-
-            <!-- Begin Link Format -->
-            <div class="post format-link box">
-
-                <h2 class="title"><a href="http://blog.csdn.net/gubojun123" target="_blank">我的CSDN<span
-                        class="arrow">&rarr;</span></a></h2>
-                <p>CSDN博客是我在大学的时候开通的，在大学时每研究一道算法题就会在博客上记录一下。后来工作了，CSDN就用来记录一些工作中遇到的问题。</p>
-
-                <div class="details">
-                    <span class="icon-link"><a href="#">July 13, 2012</a></span>
-                    <span class="likes"><a href="#" class="likeThis">10</a></span>
-                    <span class="comments"><a href="#">0</a></span>
-                </div>
-
-            </div>
-            <!-- End Link Format -->
-
-
-            <!-- Begin Chat Format -->
-            <div class="post format-chat box">
-                <h2 class="title"><a href="post.html">当前的同事</a></h2>
-                <ul>
-                    <li><strong>刘武:</strong> 刘大帅&#8230;</li>
-                    <li><strong>郑盟萌:</strong> 郑将军</li>
-                    <li><strong>吴佩:</strong> 水哥</li>
-                    <li><strong>孔官宝:</strong> 吹逼哥</li>
-                </ul>
-
-                <div class="details">
-                    <span class="icon-chat"><a href="#">June 3, 2017</a></span>
-                    <span class="likes"><a href="#" class="likeThis">5</a></span>
-                    <span class="comments"><a href="#">0</a></span>
-                </div>
-
-            </div>
-            <!-- End Chat Format -->
-
-        </div>
-        <!-- End Blog -->
-    </div>
-    <!-- End Blog Grid -->
-
-    <!-- Begin Page-navi -->
-    <div id="navigation">
-        <div class="nav-previous"><a href="#"><span class="meta-nav-prev">&larr; Older posts</span></a></div>
-        <!--
-              <div class="nav-next"><a href="#" ><span class="meta-nav-next">Newer posts &rarr;</span></a></div>
-               -->
-    </div>
-    <!-- End Page-navi -->
-
+<!-- Begin Intro -->
+<div class="intro">顾博君的网站，成功永远属于一直在跑的人！！！
 </div>
-<!-- End Wrapper -->
-
+<ul class="social">
+    <li><a class="rss" href="#"></a></li>
+    <li><a class="facebook" href="#"></a></li>
+    <li><a class="twitter" href="#"></a></li>
+    <li><a class="pinterest" href="#"></a></li>
+    <li><a class="dribbble" href="#"></a></li>
+    <li><a class="flickr" href="#"></a></li>
+    <li><a class="linkedin" href="#"></a></li>
+</ul><!-- End Intro -->
+<!-- End Header -->
+<div ng-view></div>
 <!-- Begin Footer -->
 <div class="footer-wrapper">
     <div id="footer" class="four">
