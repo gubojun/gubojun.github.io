@@ -28,47 +28,6 @@
     <script type="text/javascript" src="style/js/twitter.min.js"></script>
     <script type="text/javascript" src="style/js/angular.min-1.4.6.js"></script>
     <script type="text/javascript" src="style/js/angular-route-1.3.13.js"></script>
-    <script>
-            angular.module('gubojunApp', ['ngRoute'])
-            .controller('gubojunCtrl', function($scope) {
-			}).controller('ctrlA', function($scope) {
-			    $('#a').addClass('active');
-				$('#b').removeClass('active');
-				$('#c').removeClass('active');
-				$('#d').removeClass('active');
-			}).controller('ctrlB', function($scope) {
-				$('#a').removeClass('active');
-				$('#b').addClass('active');
-				$('#c').removeClass('active');
-				$('#d').removeClass('active');
-			}).controller('ctrlC', function($scope) {
-				$('#a').removeClass('active');
-				$('#b').removeClass('active');
-				$('#c').addClass('active');
-				$('#d').removeClass('active');
-			}).controller('ctrlD', function($scope) {
-				$('#a').removeClass('active');
-				$('#b').removeClass('active');
-				$('#c').removeClass('active');
-				$('#d').addClass('active');
-			}).config(function($routeProvider) {
-				$routeProvider.when('/index', {
-					templateUrl : 'index_center.html',
-					controller : 'ctrlA'
-				}).when('/page-with-sidebar', {
-					templateUrl : 'page-with-sidebar.html',
-					controller : 'ctrlB'
-				}).when('/typography', {
-					templateUrl : 'typography.html',
-					controller : 'ctrlC'
-				}).when('/contact', {
-					templateUrl : 'contact.html',
-					controller : 'ctrlD'
-				}).otherwise({
-					redirectTo : '/index'
-				});
-			});
-    </script>
     <script type="text/javascript">$.backstretch("style/images/bg/1.jpg");</script>
 </head>
 <body ng-app='gubojunApp' ng-controller="gubojunCtrl">
@@ -114,16 +73,15 @@
     </div>
 </div>
 <!-- Begin Intro -->
-<div class="intro">顾博君的网站，成功永远属于一直在跑的人！！！
-</div>
-<ul class="social">
-    <li><a class="rss" href="#"></a></li>
-    <li><a class="facebook" href="#"></a></li>
-    <li><a class="twitter" href="#"></a></li>
-    <li><a class="pinterest" href="#"></a></li>
-    <li><a class="dribbble" href="#"></a></li>
-    <li><a class="flickr" href="#"></a></li>
-    <li><a class="linkedin" href="#"></a></li>
+<div class="intro">顾博君的网站，成功永远属于一直在跑的人！！！</div>
+<ul class="social" data-ng-init="names=['rss','facebook','twitter','pinterest','dribbble','flickr','linkedin']">
+    <li data-ng-repeat="x in names"><a class="{{x}}" href="#/index"></a></li>
+    <!--<li><a class="facebook" href="#"></a></li>-->
+    <!--<li><a class="twitter" href="#"></a></li>-->
+    <!--<li><a class="pinterest" href="#"></a></li>-->
+    <!--<li><a class="dribbble" href="#"></a></li>-->
+    <!--<li><a class="flickr" href="#"></a></li>-->
+    <!--<li><a class="linkedin" href="#"></a></li>-->
 </ul><!-- End Intro -->
 <!-- End Header -->
 <div ng-view></div>

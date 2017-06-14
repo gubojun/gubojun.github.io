@@ -1,4 +1,46 @@
 /*-----------------------------------------------------------------------------------*/
+/*	angularJS
+/*-----------------------------------------------------------------------------------*/
+angular.module('gubojunApp', ['ngRoute'])
+            .controller('gubojunCtrl', function($scope) {
+            }).controller('ctrlA', function($scope) {
+			    $('#a').addClass('active');
+				$('#b').removeClass('active');
+				$('#c').removeClass('active');
+				$('#d').removeClass('active');
+			}).controller('ctrlB', function($scope) {
+				$('#a').removeClass('active');
+				$('#b').addClass('active');
+				$('#c').removeClass('active');
+				$('#d').removeClass('active');
+			}).controller('ctrlC', function($scope) {
+				$('#a').removeClass('active');
+				$('#b').removeClass('active');
+				$('#c').addClass('active');
+				$('#d').removeClass('active');
+			}).controller('ctrlD', function($scope) {
+				$('#a').removeClass('active');
+				$('#b').removeClass('active');
+				$('#c').removeClass('active');
+				$('#d').addClass('active');
+			}).config(function($routeProvider) {
+				$routeProvider.when('/index', {
+					templateUrl : 'index_center.html',
+					controller : 'ctrlA'
+				}).when('/page-with-sidebar', {
+					templateUrl : 'page-with-sidebar.html',
+					controller : 'ctrlB'
+				}).when('/typography', {
+					templateUrl : 'typography.html',
+					controller : 'ctrlC'
+				}).when('/contact', {
+					templateUrl : 'contact.html',
+					controller : 'ctrlD'
+				}).otherwise({
+					redirectTo : '/index'
+				});
+			});
+/*-----------------------------------------------------------------------------------*/
 /*	POSTS GRID
 /*-----------------------------------------------------------------------------------*/ 
 $(window).load(function(){
@@ -44,13 +86,15 @@ jQuery(document).ready(function($) {
 /*	BUTTON HOVER
 /*-----------------------------------------------------------------------------------*/
 
-jQuery(document).ready(function($)  {
-$("a.button, .forms fieldset .btn-submit, #commentform input#submit").css("opacity","1.0");
-$("a.button, .forms fieldset .btn-submit, #commentform input#submit").hover(function () {
-$(this).stop().animate({ opacity: 0.85 }, "fast");  },
-function () {
-$(this).stop().animate({ opacity: 1.0 }, "fast");  
-}); 
+jQuery(document).ready(
+    function($)  {
+        $("a.button, .forms fieldset .btn-submit, #commentform input#submit").css("opacity","1.0");
+        $("a.button, .forms fieldset .btn-submit, #commentform input#submit").hover(function () {
+        $(this).stop().animate({ opacity: 0.85 }, "fast");
+    },
+    function () {
+        $(this).stop().animate({ opacity: 1.0 }, "fast");
+    });
 });
 
 /*-----------------------------------------------------------------------------------*/
@@ -78,9 +122,9 @@ jQuery(document).ready(function($) {
 /*-----------------------------------------------------------------------------------*/
 
 getTwitters('twitter', {
-        id: 'elemisdesign', 
-        count: 2, 
-        enableLinks: true, 
+        id: 'gubojungubojun',
+        count: 2,
+        enableLinks: true,
         ignoreReplies: false,
         template: '<span class="twitterPrefix"><span class="twitterStatus">%text%</span><br /><em class="twitterTime"><a href="http://twitter.com/%user_screen_name%/statuses/%id%">%time%</a></em>',
         newwindow: true
