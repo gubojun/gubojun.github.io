@@ -38,8 +38,8 @@ angular.module('gubojunApp', ['ngRoute'])
 					controller : 'ctrlD'
 				}).when('/resume',{
                     templateUrl : 'resume.html'
-				}).when('/myheart',{
-                    templateUrl : 'myheart.html'
+				}).when('/heart',{
+                    templateUrl : 'heart.html'
 				}).otherwise({
 					redirectTo : '/index'
 				});
