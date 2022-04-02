@@ -21,10 +21,7 @@ function ran(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function timer_start(){
-
     var start_time = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
-    // var start_time =  new Date(beginTime);
-    // var start_time = Date.parse(beginTime);
     var duration = parseInt(new Date()- start_time)/1000;
     var seconds = parseInt( duration % 60);
     if (seconds < 10)
