@@ -39,7 +39,7 @@ angular.module('gubojunApp', ['ngRoute'])
 				}).when('/resume',{
                     templateUrl : 'resume.html'
 				}).when('/myheart',{
-                    templateUrl : 'heart.html'
+                    templateUrl : 'myheart.html'
 				}).otherwise({
 					redirectTo : '/index'
 				});
